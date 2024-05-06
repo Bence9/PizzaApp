@@ -31,7 +31,7 @@ export class OvenComponent implements OnInit{
   });
 
   ngOnInit(): void {
-    setInterval(() => this.updateOvens(), 1000); // 1000 ms = 1 mp
+    setInterval(() => this.updateOvens(), 60000); // 1000 ms = 1 mp
 
     this.orderService.getAll().subscribe({
         next: (orders) => {
