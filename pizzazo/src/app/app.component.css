@@ -1,0 +1,23 @@
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .navbar-brand{
+    color: #2c3034;
+    font-size: 22px;
+  }
+
+  .navbar-nav .nav-link {
+    color: #ca3429; /* új betűszín */
+    font-size: 18px;
+  }
+
+  .container {
+    margin-top: 10px; /* távolság a navigációs sávtól */
+  }
+
+/*
+  .container-fluid{
+    background-color: #cbc5da;
+  }
+*/

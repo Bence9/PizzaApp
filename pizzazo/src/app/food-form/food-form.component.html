@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-6">
+        <form [formGroup]="foodForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Név</label>
+                <input type="text" class="form-control" id="name" formControlName="name">
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Ár</label>
+                <input type="number" class="form-control" id="price" formControlName="price">
+            </div>
+            <div class="mb-3">
+                <label for="size" class="form-label">Méret</label>
+                <input type="text" class="form-control" id="size" formControlName="size">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Leírás</label>
+                <input type="text" class="form-control" id="description" formControlName="description">
+            </div>
+            <div class="mb-3">
+                <label for="making_time" class="form-label">Elkészítési idő (perc)</label>
+                <input type="number" class="form-control" id="making_time" formControlName="making_time">
+            </div>
+        </form>
+        <div class="text-end">
+            <button class="btn btn-outline-primary" (click)="saveFood()">Mentés</button>
+            <button class="btn btn-outline-danger" (click)="goBack()">Vissza</button>
+        </div>
+    </div>
+</div>

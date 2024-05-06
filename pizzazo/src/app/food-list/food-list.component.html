@@ -1,0 +1,36 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<div class = "row">
+    <div class = "col-md-14">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Név</th>
+                    <th>Ár</th>
+                    <th>Méret</th>
+                    <th>Leírás</th>
+                    <th>Elkészítési idő</th>
+                    <th>Műveletek</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(food of foods; track $index){
+                    <tr>
+                        <td>{{ food.id }}</td>
+                        <td>{{ food.name }}</td>
+                        <td>{{ food.price }}</td>
+                        <td>{{ food.size }}</td>
+                        <td>{{ food.description }}</td>
+                        <td>{{ food.making_time }} perc</td>
+                        <td>
+                            <button class ="btn-outline-primary" 
+                            (click)="goToFoodForm(food.id)">Módosítás</button>
+                            <button class ="btn-outline-danger" 
+                            (click)="deleteFood(food)">Törlés</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

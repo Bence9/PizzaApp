@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-md-6">
+        <form [formGroup]="orderForm">
+
+            <div class="mb-2">
+                <label for="source" class="form-label">Source</label>
+                <select class="form-select" id="source" formControlName="source">
+                    @for(user of users; track $index){
+                        <option [ngValue]="{ id: user.id }">{{user.name}} ({{user.address}})</option>
+                    }
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="orderedfood" class="form-label">Rendelt étel</label>
+
+                <div class="mb-3 d-flex align-items-center">
+                    <label for="orderedfood" class="form-label me-3">1</label> 
+                    <select class="form-select" id="orderedfood" formControlName="orderedfood">
+                        @for(food of foods; track $index){
+                            <option [ngValue]="{ id: food.id }">{{food.name}} ({{food.price}}) ({{food.making_time}})</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Ár</label>
+                <input type="number" class="form-control" id="price" formControlName="price">
+            </div> 
+
+            <div class="mb-3">
+                <label for="deliveryTime" class="form-label">Elkészítési idő</label>
+                <input type="number" class="form-control" id="deliveryTime" formControlName="deliveryTime">
+            </div>
+
+            <div class="mb-3">
+                <label for="bakingTime" class="form-label">Legrövidebb sütési idő</label>
+                <div class="d-flex align-items-right"> 
+                    <select class="form-select" id="baking">
+                      @for(oven of ovens; track $index){
+                          <option [ngValue]="{ id: oven.id }"> {{oven.id}}.sütő ({{oven.status}}) ({{oven.time}}) </option>
+                      }
+                    </select>
+                    <input type="number" class="form-control text-center" id="bakingTime" [value]="0">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="discount" class="form-label">Kedvezmény mértéke (%)</label>
+                <input type="number" class="form-control form-control-sm text-center" id="discount" [value]="5">
+            </div>
+
+            <div class="mb-3">
+                <label for="amount" class="form-label">Kedvezményt kap, aki ez felett vásárol</label>
+                <input type="number" class="form-control form-control-sm text-center" id="amount" [value]="5000">
+            </div>
+
+        </form>
+
+        <div class="text-end">
+            <button class="btn btn-outline-primary" (click)="saveOrder()">Mentés</button>
+            <button class="btn btn-outline-danger" (click)="goBack()">Vissza</button>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,19 @@
+.row{
+    background-color: #555;
+}
+
+th {
+    background-color: #555;
+    color: #fff;
+}
+
+.table td{
+    background-color: #fffefe;
+}
+
+.table td,
+.table th,
+.table tr {
+    border-color: #dc3545;
+    text-align: center;
+}

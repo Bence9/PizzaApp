@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-6">
+        <form [formGroup]="userForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Név</label>
+                <input type="text" class="form-control" id="name" formControlName="name">
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Lakcím</label>
+                <input type="text" class="form-control" id="address" formControlName="address">
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Telefonszám</label>
+                <input type="text" class="form-control" id="phone" formControlName="phone">
+            </div>
+        </form>
+        <div class="text-end">
+            <button class="btn btn-outline-primary" (click)="saveUser()">Mentés</button>
+            <button class="btn btn-outline-danger" (click)="goBack()">Vissza</button>
+        </div>
+    </div>
+</div>

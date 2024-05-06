@@ -1,0 +1,30 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<div class = "row">
+    <div class = "col-md-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Rendelés időpontja</th>
+                    <th>Ár</th>
+                    <th>Kiszállítási idő</th>
+                    <th>Műveletek</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(order of orders; track $index){
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.timestamp }}</td>
+                        <td>{{ order.price }}</td>
+                        <td>{{ order.deliveryTime }} perc</td>
+                        <td>
+                            <button class ="btn-outline-danger" 
+                            (click)="deleteOrder(order)">Töröl</button>
+                        <td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
