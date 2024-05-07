@@ -48,22 +48,32 @@ export class OvenComponent implements OnInit{
     });
 }
 
-// szabad sütő figyelő
-OvenWatcher() {
-  // van-e aktív rendelés
-  if (this.orderNumber > 0) {
-      // van-e szabad sütő
-      const freeOven = this.ovens.find(oven => oven.status !== 'süt');
-      if (freeOven) {
-          // Ha van szabad sütőnk, akkor elindítjuk
-          this.startOven(freeOven);
+
+async OvenWatcher() {
+  await this.ovenService.getAll().toPromise();
+
+  const actualOrder = 0;
+
+  // ellenőrizzük az ovens tömböt
+  if (this.ovens && this.ovens.length > 0) {
+      // van-e aktív rendelés
+      if (this.orderNumber > actualOrder) {
+          // van-e szabad sütő
+          const freeOven = this.ovens.find(oven => oven.status !== 'süt');
+          // Ellenőrizzük,hogy a freeOven nem undefined
+          if (freeOven !== undefined && freeOven.status !== null && freeOven.status !== undefined) {
+              // Ha van szabad sütőnk, akkor elindítjuk
+              console.log("Szabad suto:" + freeOven.id);
+              this.startOven(freeOven);
+          } else {
+              console.log('Nincs szabad sütő.');
+          }
       } else {
-          console.log('Nincs szabad sütő.');
+          console.log('Nincs új rendelés.');
+//          console.log("Ordercount " + this.orderNumber);
       }
-  } else {
-      console.log('Nincs új rendelés.');
-      console.log("Ordercount " + this.orderNumber);
   }
+  
 }
 
 
@@ -94,7 +104,7 @@ updateOven(oven: OvenDTO) {
   this.ovenService.update(oven).subscribe({
       next: (ovenUpdated) => {
           //TODO: notification
-          console.log('Sütő frissítve: ', ovenUpdated);
+//          console.log('Sütő frissítve: ', ovenUpdated);
       },
       error: (err) => {
           //TODO: notification
